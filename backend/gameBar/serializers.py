@@ -2,9 +2,9 @@
 # todo/serializers.py
 
 from rest_framework import serializers
-from .models import Todo
+from .models import GameBar
       
-class TodoSerializer(serializers.ModelSerializer):
+class GameBarSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Todo
+    model = GameBar
     fields = ('id', 'title', 'description', 'completed')
