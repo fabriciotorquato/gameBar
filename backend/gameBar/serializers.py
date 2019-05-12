@@ -13,15 +13,12 @@ class ParticipantSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
   class Meta:
     model = Product
-    fields = ('id', 'name', 'value', 'status')
+    fields = ('id', 'name', 'value','bar',  'status')
 
 class GameSerializer(serializers.ModelSerializer):
-  participantA = ParticipantSerializer(read_only=True)
-  participantB = ParticipantSerializer(read_only=True)
-  winner = ParticipantSerializer(read_only=True)
   class Meta:
     model = Game
-    fields = ('id', 'title', 'description' ,'participantA','participantB','winner', 'opened', 'closed')
+    fields = ('id', 'title','product','bar', 'description' ,'participantA','participantB','winner', 'opened', 'closed')
 
 
 class BarSerializer(serializers.ModelSerializer):
