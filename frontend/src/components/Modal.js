@@ -34,38 +34,48 @@ export default class CustomModal extends Component {
     const { toggle, onSave } = this.props;
     return (
       <Modal isOpen={true} toggle={toggle}>
-        <ModalHeader toggle={toggle}> Todo Item </ModalHeader>
+        <ModalHeader toggle={toggle}> Bar</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
-              <Label for="title">Title</Label>
+              <Label for="name">Nome</Label>
               <Input
                 type="text"
-                name="title"
-                value={this.state.activeItem.title}
+                name="name"
+                value={this.state.activeItem.name}
                 onChange={this.handleChange}
-                placeholder="Enter Todo Title"
+                placeholder="Digite o nome do Bar"
               />
             </FormGroup>
             <FormGroup>
-              <Label for="description">Description</Label>
+              <Label for="description">Descrição</Label>
               <Input
                 type="text"
                 name="description"
                 value={this.state.activeItem.description}
                 onChange={this.handleChange}
-                placeholder="Enter Todo description"
+                placeholder="Digite uma breve descrição"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="address">Endereço</Label>
+              <Input
+                type="text"
+                name="address"
+                value={this.state.activeItem.address}
+                onChange={this.handleChange}
+                placeholder="Digite o endereço"
               />
             </FormGroup>
             <FormGroup check>
-              <Label for="completed">
+              <Label for="status">
                 <Input
                   type="checkbox"
-                  name="completed"
-                  checked={this.state.activeItem.completed}
+                  name="status"
+                  checked={this.state.activeItem.status}
                   onChange={this.handleChange}
                 />
-                Completed
+                Ativo
               </Label>
             </FormGroup>
           </Form>

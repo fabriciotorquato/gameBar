@@ -8,13 +8,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewCompleted: false,
+      statusAtivo: true,
       activeItem: {
-        title: "",
+        name: "",
         description: "",
-        completed: false
+        address: "",
+        status: false
       },
-      todoList: []
+      barsList: []
     };
   }
   componentDidMount() {
@@ -22,38 +23,38 @@ class App extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://localhost:8000/api/games/")
-      .then(res => this.setState({ todoList: res.data }))
+      .get("http://localhost:8000/api/bars/")
+      .then(res => this.setState({ barsList: res.data }))
       .catch(err => console.log(err));
   };
   displayCompleted = status => {
     if (status) {
-      return this.setState({ viewCompleted: true });
+      return this.setState({ statusAtivo: true });
     }
-    return this.setState({ viewCompleted: false });
+    return this.setState({ statusAtivo: false });
   };
   renderTabList = () => {
     return (
       <div className="my-5 tab-list">
         <span
           onClick={() => this.displayCompleted(true)}
-          className={this.state.viewCompleted ? "active" : ""}
+          className={this.state.statusAtivo ? "active" : ""}
         >
-          complete
+          Ativo
         </span>
         <span
           onClick={() => this.displayCompleted(false)}
-          className={this.state.viewCompleted ? "" : "active"}
+          className={this.state.statusAtivo ? "" : "active"}
         >
-          Incomplete
+          Inativo
         </span>
       </div>
     );
   };
   renderItems = () => {
-    const { viewCompleted } = this.state;
-    const newItems = this.state.todoList.filter(
-      item => item.completed === viewCompleted
+    const { statusAtivo } = this.state;
+    const newItems = this.state.barsList.filter(
+      item => item.status === statusAtivo
     );
     return newItems.map(item => (
       <li
@@ -61,29 +62,50 @@ class App extends Component {
         className="list-group-item d-flex justify-content-between align-items-center"
       >
         <span
-          className={`todo-title mr-2 ${
-            this.state.viewCompleted ? "completed-todo" : ""
-          }`}
+          className={`todo-title mr-2`}
           title={item.description}
         >
-          {item.title}
+          {item.name}
+
+          <span
+            className={`todo-title ml-2`}
+            title={item.address}
+          >
+            <b> Endereço:</b>
+            {item.address}
+          </span >
+          <span
+            className={`todo-title ml-2`}
+            title={item.address}
+          >
+            <b> Qtd Produtos:</b>
+            {item.products.length}
+          </span >
+          <span
+            className={`todo-title ml-2`}
+            title={item.address}
+          >
+            <b> Qtd Games:</b>
+            {item.games.length}
+          </span >
         </span>
+
         <span>
           <button
             onClick={() => this.editItem(item)}
             className="btn btn-secondary mr-2"
           >
             {" "}
-            Edit{" "}
+            Editar{" "}
           </button>
           <button
             onClick={() => this.handleDelete(item)}
             className="btn btn-danger"
           >
-            Delete{" "}
+            Deletar{" "}
           </button>
         </span>
-      </li>
+      </li >
     ));
   };
   toggle = () => {
@@ -93,21 +115,21 @@ class App extends Component {
     this.toggle();
     if (item.id) {
       axios
-        .put(`http://localhost:8000/api/games/${item.id}/`, item)
+        .put(`http://localhost:8000/api/bars/${item.id}/`, item)
         .then(res => this.refreshList());
       return;
     }
     axios
-      .post("http://localhost:8000/api/games/", item)
+      .post("http://localhost:8000/api/bars/", item)
       .then(res => this.refreshList());
   };
   handleDelete = item => {
     axios
-      .delete(`http://localhost:8000/api/games/${item.id}`)
+      .delete(`http://localhost:8000/api/bars/${item.id}`)
       .then(res => this.refreshList());
   };
   createItem = () => {
-    const item = { title: "", description: "", completed: false };
+    const item = { name: "", description: "", address: "", status: false };
     this.setState({ activeItem: item, modal: !this.state.modal });
   };
   editItem = item => {
@@ -122,7 +144,7 @@ class App extends Component {
             <div className="card p-3">
               <div className="">
                 <button onClick={this.createItem} className="btn btn-primary">
-                  Add task
+                  Adicionar bar
                 </button>
               </div>
               {this.renderTabList()}
