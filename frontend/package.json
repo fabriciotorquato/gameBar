@@ -14,7 +14,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "yarn run protractor",
+    "protractor": "protractor test/protractor-conf.js",
+    "selenium": "webdriver-manager start",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -25,5 +27,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "jasmine-spec-reporter": "^4.2.1",
+    "protractor": "^5.4.2"
+  }
 }
