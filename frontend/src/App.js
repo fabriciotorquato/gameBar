@@ -71,21 +71,21 @@ class App extends Component {
             className={`todo-title ml-2`}
             title={item.address}
           >
-            <b> Endereço:</b>
+            <b> Endereço:  </b>
             {item.address}
           </span >
           <span
             className={`todo-title ml-2`}
             title={item.address}
           >
-            <b> Qtd Produtos:</b>
+            <b> Qtd Produtos:  </b>
             {item.products.length}
           </span >
           <span
             className={`todo-title ml-2`}
             title={item.address}
           >
-            <b> Qtd Games:</b>
+            <b> Qtd Games:   </b>
             {item.games.length}
           </span >
         </span>
@@ -139,8 +139,8 @@ class App extends Component {
     return (
       <main className="content">
         <h1 className="text-white text-uppercase text-center my-4">Game Bar App</h1>
-        <div className="row ">
-          <div className="col-md-6 col-sm-10 mx-auto p-0">
+        <div className="row" style={{margin:0}}>
+          <div className="col-md-8 col-sm-10 mx-auto p-0">
             <div className="card p-3">
               <div className="">
                 <button onClick={this.createItem} className="btn btn-primary">
