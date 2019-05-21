@@ -14,7 +14,7 @@
 1. ```[cd frontend]```
 2. ```[yarn install ]```
 3. ```[yarn start]```
-4. [localhost:3000](http://localhost:3000))
+4. [localhost:3000] (http://localhost:3000))
 
 ## Test
 1. coverage run --source='.' manage.py test gameBar
