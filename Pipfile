@@ -8,6 +8,7 @@ django = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
 django-rest-swagger = "*"
+coverage = "*"
 
 [dev-packages]
 pylint = "*"
