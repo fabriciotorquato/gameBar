@@ -11,8 +11,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd frontend'
-                sh 'yarn install'
+                cd frontend
+                yarn install
             }
         }
         stage('Test') {
