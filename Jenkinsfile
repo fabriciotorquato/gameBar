@@ -15,19 +15,5 @@ pipeline {
                 yarn install
             }
         }
-        stage('Test') {
-            steps {
-                cd frontend
-                ./jenkins/scripts/test.sh
-            }
-        }
-        stage('Deliver') {
-            steps {
-                cd frontend
-                ./jenkins/scripts/deliver.sh
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                ./jenkins/scripts/kill.sh
-            }
-        }
     }
 }
