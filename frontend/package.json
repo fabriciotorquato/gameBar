@@ -14,9 +14,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "yarn run protractor",
-    "protractor": "protractor test/protractor-conf.js",
-    "selenium": "webdriver-manager start",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -29,6 +27,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.4.2"
   }
