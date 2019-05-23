@@ -17,16 +17,16 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd frontend'
-                sh './jenkins/scripts/test.sh'
+                cd frontend
+                ./jenkins/scripts/test.sh
             }
         }
         stage('Deliver') {
             steps {
-                sh 'cd frontend'
-                sh './jenkins/scripts/deliver.sh'
+                cd frontend
+                ./jenkins/scripts/deliver.sh
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                ./jenkins/scripts/kill.sh
             }
         }
     }
