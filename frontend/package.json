@@ -15,7 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
-    "e2e": "jest --detectOpenHandles --verbose",
+    "e2e": "jest --detectOpenHandles --verbose --reporters='default'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
