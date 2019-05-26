@@ -36,12 +36,13 @@ export default class CustomModal extends Component {
       <Modal isOpen={true} toggle={toggle}>
         <ModalHeader toggle={toggle}> Bar</ModalHeader>
         <ModalBody>
-          <Form>
+          <Form className="bar-form">
             <FormGroup>
               <Label for="name">Nome</Label>
               <Input
                 type="text"
                 name="name"
+                className="input-name"
                 value={this.state.activeItem.name}
                 onChange={this.handleChange}
                 placeholder="Digite o nome do Bar"
@@ -52,6 +53,7 @@ export default class CustomModal extends Component {
               <Input
                 type="text"
                 name="description"
+                className="input-description"
                 value={this.state.activeItem.description}
                 onChange={this.handleChange}
                 placeholder="Digite uma breve descrição"
@@ -62,6 +64,7 @@ export default class CustomModal extends Component {
               <Input
                 type="text"
                 name="address"
+                className="input-address"
                 value={this.state.activeItem.address}
                 onChange={this.handleChange}
                 placeholder="Digite o endereço"
@@ -72,6 +75,7 @@ export default class CustomModal extends Component {
                 <Input
                   type="checkbox"
                   name="status"
+                  className="input-status"
                   checked={this.state.activeItem.status}
                   onChange={this.handleChange}
                 />
@@ -81,7 +85,11 @@ export default class CustomModal extends Component {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="success" onClick={() => onSave(this.state.activeItem)}>
+          <Button
+            className="btn-submit"
+            color="success"
+            onClick={() => onSave(this.state.activeItem)}
+          >
             Save
           </Button>
         </ModalFooter>

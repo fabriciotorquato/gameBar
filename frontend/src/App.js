@@ -138,12 +138,12 @@ class App extends Component {
   render() {
     return (
       <main className="content">
-        <h1 className="text-white text-uppercase text-center my-4">Game Bar App</h1>
+        <h1 className="app-title text-white text-uppercase text-center my-4">Game Bar App</h1>
         <div className="row" style={{margin:0}}>
           <div className="col-md-8 col-sm-10 mx-auto p-0">
             <div className="card p-3">
               <div className="">
-                <button onClick={this.createItem} className="btn btn-primary">
+                <button onClick={this.createItem} className="btn-add-bar btn btn-primary">
                   Adicionar bar
                 </button>
               </div>

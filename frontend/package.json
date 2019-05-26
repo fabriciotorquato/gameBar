@@ -15,6 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "e2e": "jest --detectOpenHandles --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -28,7 +29,11 @@
   ],
   "devDependencies": {
     "cross-env": "^5.2.0",
+    "faker": "^4.1.0",
     "jasmine-spec-reporter": "^4.2.1",
-    "protractor": "^5.4.2"
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
+    "protractor": "^5.4.2",
+    "puppeteer": "^1.17.0"
   }
 }
