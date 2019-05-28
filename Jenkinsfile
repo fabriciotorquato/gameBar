@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("frontend") {
-                    sh 'npm install'
+                    sh 'yarn install'
                 }
             }
         }
