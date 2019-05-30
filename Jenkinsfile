@@ -40,7 +40,7 @@ pipeline {
         //             junit 'output/coverage/junit/junit.xml'
         //         }
         //     }
-        }
+        // }
         stage('Deliver') {
             steps {
                 script {
