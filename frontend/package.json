@@ -14,9 +14,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env CI=true react-scripts test --env=jsdom",
-    "e2e": "jest --detectOpenHandles --verbose --reporters='default'",
+    "test": "jest --detectOpenHandles --verbose --reporters='default' --coverage --coverageDirectory=output/coverage/jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "cobertura"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
