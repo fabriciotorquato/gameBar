@@ -20,6 +20,7 @@ echo 'the file ".pidfile".'
 set -x
 yarn start &
 sleep 1
+yarn run e2e
 echo $! > .pidfile
 set +x
 
