@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     dir("frontend") {
-                        sh 'yarn test'
+                        sh './jenkins/scripts/test.sh' 
                     }
                 }
             }
