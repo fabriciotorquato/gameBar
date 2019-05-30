@@ -17,6 +17,16 @@ pipeline {
                     }
                 }
             }
+        }        
+        stage('Build') {
+            steps {
+                script {
+                    dir("frontend") {
+                        sh 'yarn start'
+                        sh 'yarn build'
+                    }
+                }
+            }
         }
         stage('Test') {
             steps {
@@ -29,16 +39,6 @@ pipeline {
            post {
                 always {
                     junit 'output/coverage/junit/junit.xml'
-                }
-            }
-        }
-        stage('Build') {
-            steps {
-                script {
-                    dir("frontend") {
-                        sh 'yarn start'
-                        sh 'yarn build'
-                    }
                 }
             }
         }     
