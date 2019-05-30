@@ -30,7 +30,7 @@ pipeline {
         recipientProviders: [
             [$class: 'DevelopersRecipientProvider'], 
             [$class: 'RequesterRecipientProvider']],
-            to:'robertolg.luiz@mail.com',
+            to:'fabricio.torquato1@mail.com',
              subject: 'Build Jenkins GameBar'
     }
 }
