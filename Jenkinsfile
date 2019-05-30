@@ -9,30 +9,49 @@ pipeline {
         CI = 'true'
     }
     stages {
+        stage('Startup') {
+            steps {
+                script {
+                    dir("frontend") {
+                        sh 'yarn install'
+                    }
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    dir("frontend") {
+                        sh 'yarn test'
+                    }
+                }
+            }
+            post {
+                always {
+                    step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml'])
+                }
+            }
+        }
         stage('Build') {
             steps {
-                dir("frontend") {
-                    sh 'yarn install'
+                script {
+                    dir("frontend") {
+                        sh 'yarn start'
+                        sh 'yarn build'
+                    }
                 }
             }
-        }
-        stage('Test') { 
-            steps {
-                  dir("frontend") {
-                      sh './jenkins/scripts/test.sh' 
-                }
-            }
-        }        
+        }     
     }
-    post 
-    {
-        always {
-            emailext body: 'Build Jenkins Game Bar', 
-            recipientProviders: [
-                [$class: 'DevelopersRecipientProvider'], 
-                [$class: 'RequesterRecipientProvider']],
-                to:'gameBarApp@gmail.com',
-                subject: 'Build Jenkins GameBar'
-        }
-    }
+    // post 
+    // {
+    //     always {
+    //         emailext body: 'Build Jenkins Game Bar', 
+    //         recipientProviders: [
+    //             [$class: 'DevelopersRecipientProvider'], 
+    //             [$class: 'RequesterRecipientProvider']],
+    //             to:'gameBarApp@gmail.com',
+    //             subject: 'Build Jenkins GameBar'
+    //     }
+    // }
 }
