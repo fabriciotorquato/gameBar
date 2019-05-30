@@ -16,23 +16,23 @@ pipeline {
                 }
             }
         }
-        // stage('Test') { 
-        //     steps {
-        //           dir("frontend") {
-        //               sh './jenkins/scripts/test.sh' 
-        //         }
-        //     }
-        // }        
+        stage('Test') { 
+            steps {
+                  dir("frontend") {
+                      sh './jenkins/scripts/test.sh' 
+                }
+            }
+        }        
     }
-    // post 
-    // {
-    //     always {
-    //         emailext body: 'Build Jenkins Game Bar', 
-    //         recipientProviders: [
-    //             [$class: 'DevelopersRecipientProvider'], 
-    //             [$class: 'RequesterRecipientProvider']],
-    //             to:'gameBarApp@gmail.com',
-    //             subject: 'Build Jenkins GameBar'
-    //     }
-    // }
+    post 
+    {
+        always {
+            emailext body: 'Build Jenkins Game Bar', 
+            recipientProviders: [
+                [$class: 'DevelopersRecipientProvider'], 
+                [$class: 'RequesterRecipientProvider']],
+                to:'gameBarApp@gmail.com',
+                subject: 'Build Jenkins GameBar'
+        }
+    }
 }
