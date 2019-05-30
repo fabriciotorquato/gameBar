@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
+        stage('Test E2E') {
             steps {
                 script {
                     dir("frontend") {
@@ -52,15 +52,15 @@ pipeline {
             }
         }     
     }
-    // post 
-    // {
-    //     always {
-    //         emailext body: 'Build Jenkins Game Bar', 
-    //         recipientProviders: [
-    //             [$class: 'DevelopersRecipientProvider'], 
-    //             [$class: 'RequesterRecipientProvider']],
-    //             to:'gameBarApp@gmail.com',
-    //             subject: 'Build Jenkins GameBar'
-    //     }
-    // }
+    post 
+    {
+        always {
+            emailext body: 'Build Jenkins Game Bar', 
+            recipientProviders: [
+                [$class: 'DevelopersRecipientProvider'], 
+                [$class: 'RequesterRecipientProvider']],
+                to:'gameBarApp@gmail.com',
+                subject: 'Build Jenkins GameBar'
+        }
+    }
 }

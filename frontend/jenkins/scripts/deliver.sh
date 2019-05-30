@@ -8,6 +8,5 @@ set +x
 set -x
 yarn start &
 sleep 1
-yarn test
 echo $! > .pidfile
 set +x
