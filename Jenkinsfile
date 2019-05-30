@@ -27,19 +27,19 @@ pipeline {
                 }
             }
         }
-        stage('Test E2E') {
-            steps {
-                script {
-                    dir("frontend") {
-                        sh './jenkins/scripts/test.sh' 
-                    }
-                }
-            }
-           post {
-                always {
-                    junit 'output/coverage/junit/junit.xml'
-                }
-            }
+        // stage('Test E2E') {
+        //     steps {
+        //         script {
+        //             dir("frontend") {
+        //                 sh './jenkins/scripts/test.sh' 
+        //             }
+        //         }
+        //     }
+        //    post {
+        //         always {
+        //             junit 'output/coverage/junit/junit.xml'
+        //         }
+        //     }
         }
         stage('Deliver') {
             steps {
