@@ -16,22 +16,23 @@ pipeline {
                 }
             }
         }
-        stage('Test') { 
-            steps {
-                  dir("frontend") {
-                      sh './jenkins/scripts/test.sh' 
-                }
-            }
-        }        
+        // stage('Test') { 
+        //     steps {
+        //           dir("frontend") {
+        //               sh './jenkins/scripts/test.sh' 
+        //         }
+        //     }
+        // }        
     }
-    post {
-    always {
-        emailext body: 'Build Jenkins Game Bar. - Luiz Roberto Silva 152563, Fabricio Torquato-153124, Marco Paiva-152945', 
-        recipientProviders: [
-            [$class: 'DevelopersRecipientProvider'], 
-            [$class: 'RequesterRecipientProvider']],
-            to:'fabricio.torquato1@mail.com',
-             subject: 'Build Jenkins GameBar'
-    }
-}
+    // post 
+    // {
+    //     always {
+    //         emailext body: 'Build Jenkins Game Bar', 
+    //         recipientProviders: [
+    //             [$class: 'DevelopersRecipientProvider'], 
+    //             [$class: 'RequesterRecipientProvider']],
+    //             to:'gameBarApp@gmail.com',
+    //             subject: 'Build Jenkins GameBar'
+    //     }
+    // }
 }
