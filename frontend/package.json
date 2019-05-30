@@ -19,9 +19,16 @@
   },
   "jest": {
     "coverageReporters": [
-      "text",
-      "cobertura"
+      "text"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
     ]
+  },
+  "jest-junit": {
+    "output": "output/coverage/junit/junit.xml",
+    "usePathForSuiteName": "true"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +44,7 @@
     "faker": "^4.1.0",
     "jasmine-spec-reporter": "^4.2.1",
     "jest-cli": "^24.8.0",
+    "jest-junit": "^6.4.0",
     "protractor": "^5.4.2",
     "puppeteer": "^1.17.0"
   }
